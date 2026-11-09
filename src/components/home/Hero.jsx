@@ -158,7 +158,7 @@ function Hero() {
             variants={itemVariants}
           >
             We design digital experiences, engineer intelligent
-            systems and provide technology insight that helps
+            systems and provide technology insight that helps individuals &
             organisations move from ideas to implementation.
           </motion.p>
 
