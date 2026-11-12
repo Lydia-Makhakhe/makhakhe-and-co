@@ -1,19 +1,18 @@
+
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import {
-  ArrowDown,
   ArrowUpRight,
+  Building2,
   Check,
-  Monitor,
   Code2,
   Compass,
-  Sparkles,
-  PartyPopper,
-  Store,
-  Building2,
-  Users,
   Heart,
+  Monitor,
+  PartyPopper,
+  Sparkles,
+  Store,
 } from 'lucide-react';
 
 import './Services.css';
@@ -21,547 +20,339 @@ import './Services.css';
 const services = [
   {
     number: '01',
-    category: 'DESIGNING FOR PEOPLE',
+    category: 'DESIGN & EXPERIENCE',
     title: 'Human-Centred Digital Design',
-    summary:
-      'We create digital experiences that are intuitive, accessible and designed around the people who use them.',
-    question: 'How should people experience your solution?',
+    shortTitle: 'Digital Design',
     description:
-      'Every successful digital experience begins with understanding people. We explore your audience, their needs and their expectations before shaping interfaces and experiences that feel natural to use.',
+      'We design digital experiences around real people. From the first impression to the smallest interaction, every detail has a purpose.',
     outcome:
-      'Thoughtful, accessible and engaging digital experiences that put people first.',
+      'Clear, intuitive digital experiences that are easy to understand and enjoyable to use.',
     capabilities: [
-      'User research and requirements discovery',
-      'Website and mobile app interface design',
-      'User experience and interaction design',
-      'Accessibility and inclusive design',
-      'Prototyping and usability testing',
-      'Responsive design and design systems',
+      'User interface (UI) design',
+      'User experience (UX) design',
+      'Responsive web design',
+      'Digital identity and visual direction',
     ],
     icon: Monitor,
-    keywords: ['Understand', 'Design', 'Test'],
+    keywords: ['Intuitive', 'Accessible', 'Purposeful'],
   },
   {
     number: '02',
-    category: 'DIGITAL EXPERIENCES & CUSTOM CREATION',
+    category: 'INTERACTIVE SOLUTIONS',
     title: 'Interactive Digital Experiences',
-    summary:
-      'From cinematic digital invitations to bespoke online products, we create experiences that go beyond the ordinary.',
-    question: 'What if your digital experience could feel unforgettable?',
+    shortTitle: 'Digital Experiences',
     description:
-      'Not every digital product needs to be a website or an application. We create customised digital experiences for celebrations, hospitality, brands and personal projects. Think interactive invitations, thoughtful event journeys, digital keepsakes and distinctive online experiences that make ordinary moments feel considered.',
+      'We bring ideas to life through engaging websites, applications and interactive platforms that help people connect, explore and get things done.',
     outcome:
-      'Personalised digital experiences that express your vision, engage your audience and make an impression.',
+      'Engaging digital platforms that make interactions simpler and more meaningful.',
     capabilities: [
-      'Interactive digital invitations and event experiences',
-      'Personalised RSVP journeys and event countdowns',
-      'Digital seating charts and guest experiences',
-      'Custom digital announcements and keepsakes',
-      'Interactive product customisers and previews',
-      'Dynamic digital lookbooks and bespoke components',
+      'Website design and development',
+      'Interactive web applications',
+      'E-commerce experiences',
+      'Digital platform development',
     ],
     icon: Sparkles,
-    keywords: ['Imagine', 'Personalise', 'Experience'],
+    keywords: ['Engaging', 'Responsive', 'Connected'],
   },
   {
     number: '03',
-    category: 'IDEA TO IMPLEMENTATION',
+    category: 'ENGINEERING & DEVELOPMENT',
     title: 'Software & Systems Engineering',
-    summary:
-      'We turn ideas into working websites, applications and digital systems, from planning through to production.',
-    question: 'How do we turn your idea into a working product?',
+    shortTitle: 'Software Engineering',
     description:
-      'We guide software projects through the development lifecycle. From defining requirements and planning to development, testing, deployment and ongoing support, we take a structured approach to bringing digital solutions to life.',
+      'We engineer reliable software and connected systems that solve practical problems. Our approach brings together thoughtful architecture, dependable development and continuous improvement.',
     outcome:
-      'Reliable digital products designed to perform well, protect information and grow alongside your organisation.',
+      'Scalable, maintainable software built to support real operational needs.',
     capabilities: [
-      'Software requirements and project planning',
-      'Website and web application development',
-      'Mobile application development',
-      'Software testing and quality assurance',
-      'Deployment, maintenance and security',
-      'System integration and performance improvements',
+      'Custom software development',
+      'Backend and API development',
+      'Systems integration',
+      'Testing, optimisation and maintenance',
     ],
     icon: Code2,
-    keywords: ['Plan', 'Develop', 'Deliver'],
+    keywords: ['Reliable', 'Scalable', 'Built to last'],
   },
   {
     number: '04',
-    category: 'STRATEGY & DIRECTION',
+    category: 'STRATEGY & ADVISORY',
     title: 'Digital Strategy & Technology Advisory',
-    summary:
-      'We help individuals and organisations shape ideas, make informed technology decisions and find their next step.',
-    question: 'What should you build, and where should you start?',
+    shortTitle: 'Technology Advisory',
     description:
-      'You may have an idea, a business challenge or an existing digital presence that no longer reflects your vision. We help you evaluate opportunities, understand your options and develop a practical direction before committing time and resources.',
+      'We help individuals and organisations make informed technology decisions, identify opportunities and turn digital ambitions into practical plans.',
     outcome:
-      'A clearer vision, practical recommendations and a more confident path forward.',
+      'A clearer technology direction, with practical steps to move forward.',
     capabilities: [
-      'Digital strategy and technology guidance',
-      'Technology assessment and recommendations',
-      'Software project planning and direction',
-      'Digital transformation and rebranding guidance',
-      'Application analytics and performance insights',
-      'AI-supported analysis where it adds value',
+      'Digital transformation guidance',
+      'Technology assessment',
+      'Solution planning and roadmapping',
+      'Technical consultation',
     ],
     icon: Compass,
-    keywords: ['Explore', 'Evaluate', 'Plan'],
+    keywords: ['Strategic', 'Practical', 'Forward-thinking'],
   },
 ];
 
 const audiences = [
   {
-    number: '01',
-    label: 'HOSPITALITY & EVENTS',
-    title: 'For those who bring people together.',
+    title: 'Hospitality & Events',
     description:
-      'Hotels, venues, event planners, wedding professionals and hospitality brands looking to elevate the guest experience.',
-    examples: [
-      'Personalised digital invitations',
-      'Interactive RSVP experiences',
-      'Digital seating arrangements',
-      'Guest information and event journeys',
-    ],
+      'Digital experiences that help hospitality and event businesses present their offerings and connect with their audiences.',
+    examples: 'Hotels, venues, restaurants and event organisers',
     icon: PartyPopper,
   },
   {
-    number: '02',
-    label: 'INDIVIDUALS & HOSTS',
-    title: 'For moments worth making memorable.',
+    title: 'Individuals & Hosts',
     description:
-      'Individuals planning weddings, birthdays, celebrations and intimate gatherings who want something more personal than a standard invitation.',
-    examples: [
-      'Custom digital invitations',
-      'Event countdowns and announcements',
-      'Personalised celebration websites',
-      'Digital keepsakes and experiences',
-    ],
+      'Thoughtful digital solutions for personal projects, independent professionals and people bringing new ideas to life.',
+    examples: 'Personal brands, portfolios and independent projects',
     icon: Heart,
   },
   {
-    number: '03',
-    label: 'BUSINESS OWNERS & ENTREPRENEURS',
-    title: 'For ideas ready to reach the world.',
+    title: 'Business Owners & Entrepreneurs',
     description:
-      'Startups, independent businesses and entrepreneurs who want to establish themselves online, connect with customers and grow beyond their immediate surroundings.',
-    examples: [
-      'Business websites and online presence',
-      'Digital storefronts and product showcases',
-      'Custom business tools and applications',
-      'Interactive experiences for customers',
-    ],
+      'Practical technology that helps businesses establish their digital presence, improve processes and grow with confidence.',
+    examples: 'Startups, small businesses and growing ventures',
     icon: Store,
   },
   {
-    number: '04',
-    label: 'COMPANIES & ORGANISATIONS',
-    title: 'For businesses ready for a new chapter.',
+    title: 'Companies & Organisations',
     description:
-      'Established businesses and organisations looking to modernise their digital presence, reposition their brand or make their systems work better.',
-    examples: [
-      'Website redesign and digital rebranding',
-      'Modernising existing digital platforms',
-      'Custom software and system development',
-      'Technology strategy and digital improvements',
-    ],
+      'Purposeful software, systems and digital strategy for organisations with more complex operational needs.',
+    examples: 'Established companies, institutions and teams',
     icon: Building2,
   },
 ];
 
-const sectionVariants = {
-  hidden: {
-    opacity: 0,
-    y: 28,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
-const detailsVariants = {
-  hidden: {
-    opacity: 0,
-    y: 14,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.45,
-      delay: 0.08,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
+const revealTransition = {
+  duration: 0.8,
+  ease: [0.22, 1, 0.36, 1],
 };
 
 function Services() {
-  const [expandedService, setExpandedService] = useState(0);
+  const [activeService, setActiveService] = useState(0);
 
-  const toggleService = (index) => {
-    setExpandedService((current) =>
-      current === index ? null : index
-    );
-  };
+  const selectedService = services[activeService];
+  const SelectedIcon = selectedService.icon;
 
   return (
     <section className="services-section" id="services">
+      <div className="services-transition" aria-hidden="true">
+        <span className="services-transition-line" />
+        <span className="services-transition-light" />
+      </div>
+
       <div className="services-container">
-
-        {/* SERVICES INTRODUCTION */}
-
+        {/* SECTION INTRODUCTION */}
         <motion.div
-          className="services-header"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
+          className="services-heading"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={revealTransition}
         >
           <div className="services-eyebrow">
             <span className="services-eyebrow-line" />
             <span>WHAT WE DO</span>
-            <span className="services-eyebrow-divider">/</span>
-            <span>OUR EXPERTISE</span>
           </div>
 
-          <div className="services-heading-row">
-            <h2 className="services-heading">
-              Technology with
-              <br />
-              <span>purpose.</span> Built for people.
+          <div className="services-heading-content">
+            <h2>
+              Technology with purpose.
+              <span> Built for people.</span>
             </h2>
 
-            <p className="services-intro">
-              From digital invitations to complex software systems,
-              we bring together design, human understanding and
-              technology to create experiences that matter.
+            <p>
+              We combine design, engineering and strategic thinking to
+              create digital solutions that serve real needs.
             </p>
           </div>
+        </motion.div>
 
-          <div className="services-philosophy">
-            <span>OUR PHILOSOPHY</span>
+        {/* INTERACTIVE SERVICE EXPLORER */}
+        <motion.div
+          className="service-explorer"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ ...revealTransition, delay: 0.1 }}
+        >
+          <div className="service-selector">
+            <div className="service-selector-heading">
+              <span className="service-selector-label">
+                EXPLORE OUR SERVICES
+              </span>
 
-            <div className="philosophy-words">
-              <span>DESIGN-LED</span>
-              <span className="philosophy-symbol">+</span>
-              <span>HUMAN-CENTRED</span>
-              <span className="philosophy-symbol">+</span>
-              <span>DIGITALLY ENGINEERED</span>
+              <span className="service-selector-count">
+                04 SERVICES
+              </span>
+            </div>
+
+            <div
+              className="service-options"
+              role="tablist"
+              aria-label="Our services"
+            >
+              {services.map((service, index) => {
+                const ServiceIcon = service.icon;
+                const isActive = activeService === index;
+
+                return (
+                  <button
+                    key={service.number}
+                    type="button"
+                    role="tab"
+                    id={`service-tab-${index}`}
+                    aria-selected={isActive}
+                    aria-controls="service-display"
+                    className={`service-option ${isActive ? 'active' : ''}`}
+                    onClick={() => setActiveService(index)}
+                  >
+                    <span className="service-option-top">
+                      <span className="service-option-number">
+                        {service.number}
+                      </span>
+
+                      <ServiceIcon
+                        className="service-option-icon"
+                        size={19}
+                        strokeWidth={1.6}
+                      />
+                    </span>
+
+                    <span className="service-option-bottom">
+                      <span className="service-option-title">
+                        {service.shortTitle}
+                      </span>
+
+                      <span className="service-option-action">
+                        {isActive ? 'EXPLORING' : 'EXPLORE'}
+                        <ArrowUpRight size={14} />
+                      </span>
+                    </span>
+
+                    <span className="service-option-indicator" />
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="service-selector-footer">
+              <span className="service-selector-dot" />
+              <span>Select a service to discover what we do</span>
             </div>
           </div>
-        </motion.div>
 
-        {/* SERVICE INSTRUCTIONS */}
-
-        <motion.div
-          className="services-instruction"
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-        >
-          <div className="services-instruction-left">
-            <span className="instruction-indicator" />
-            <p>HOW WE CAN HELP</p>
-          </div>
-
-          <span className="services-instruction-text">
-            Explore a service to discover what we can create together.
-          </span>
-        </motion.div>
-
-        {/* SERVICE ACCORDION */}
-
-        <motion.div
-          className="services-list"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.13,
-              },
-            },
-          }}
-        >
-          {services.map((service, index) => {
-            const ServiceIcon = service.icon;
-            const isExpanded = expandedService === index;
-
-            return (
-              <motion.article
-                className={`service-item ${
-                  isExpanded ? 'is-expanded' : ''
-                }`}
-                key={service.number}
-                variants={sectionVariants}
-                layout
-                whileHover={{
-                  y: -2,
-                  transition: { duration: 0.25 },
-                }}
+          {/* SERVICE INFORMATION */}
+          <div
+            className="service-display"
+            id="service-display"
+            role="tabpanel"
+            aria-labelledby={`service-tab-${activeService}`}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedService.number}
+                className="service-display-content"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
               >
-                <div className="service-overview">
-                  <div className="service-overview-number">
-                    {service.number}
-                  </div>
+                <div className="service-display-top">
+                  <span className="service-display-category">
+                    {selectedService.category}
+                  </span>
 
-                  <div className="service-overview-icon">
-                    <motion.div
-                      animate={
-                        isExpanded
-                          ? {
-                              rotate: [0, -8, 0],
-                              scale: [1, 1.08, 1],
-                            }
-                          : { rotate: 0, scale: 1 }
-                      }
-                      transition={{ duration: 0.45 }}
-                    >
-                      <ServiceIcon size={24} strokeWidth={1.5} />
-                    </motion.div>
-                  </div>
-
-                  <div className="service-overview-content">
-                    <span className="service-category">
-                      {service.category}
-                    </span>
-
-                    <h3 className="service-title">
-                      {service.title}
-                    </h3>
-
-                    <p className="service-summary">
-                      {service.summary}
-                    </p>
-                  </div>
-
-                  <motion.button
-                    className="service-toggle"
-                    type="button"
-                    onClick={() => toggleService(index)}
-                    aria-expanded={isExpanded}
-                    aria-controls={`service-details-${index}`}
-                    whileHover={{ scale: 1.025 }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <span>
-                      {isExpanded
-                        ? 'Close details'
-                        : 'Explore this service'}
-                    </span>
-
-                    <motion.span
-                      className="service-toggle-icon"
-                      animate={{ rotate: isExpanded ? 180 : 0 }}
-                      transition={{
-                        duration: 0.3,
-                        ease: 'easeInOut',
-                      }}
-                    >
-                      <ArrowDown size={17} />
-                    </motion.span>
-                  </motion.button>
+                  <span className="service-display-number">
+                    {selectedService.number} / 04
+                  </span>
                 </div>
 
-                {/* SERVICE DETAILS */}
+                <div className="service-display-icon">
+                  <SelectedIcon size={27} strokeWidth={1.5} />
+                </div>
 
-                <AnimatePresence initial={false}>
-                  {isExpanded && (
-                    <motion.div
-                      className="service-details"
-                      id={`service-details-${index}`}
-                      key="details"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{
-                        height: {
-                          duration: 0.45,
-                          ease: [0.22, 1, 0.36, 1],
-                        },
-                        opacity: { duration: 0.3 },
-                      }}
-                    >
-                      <motion.div
-                        className="service-details-inner"
-                        variants={detailsVariants}
-                        initial="hidden"
-                        animate="visible"
-                      >
-                        <div className="service-details-main">
-                          <span className="service-details-label">
-                            THE IDEA
-                          </span>
+                <h3>{selectedService.title}</h3>
 
-                          <h4>{service.question}</h4>
+                <p className="service-display-description">
+                  {selectedService.description}
+                </p>
 
-                          <p className="service-details-description">
-                            {service.description}
-                          </p>
+                <div className="service-display-divider" />
 
-                          <div className="service-outcome">
-                            <span className="service-outcome-icon">
-                              <Check size={15} />
-                            </span>
+                <div className="service-display-details">
+                  <div className="service-capabilities">
+                    <span className="service-detail-label">
+                      WHAT WE OFFER
+                    </span>
 
-                            <div>
-                              <span className="service-outcome-label">
-                                THE RESULT
-                              </span>
+                    <ul>
+                      {selectedService.capabilities.map((capability) => (
+                        <li key={capability}>
+                          <Check size={15} />
+                          <span>{capability}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                              <p>{service.outcome}</p>
-                            </div>
-                          </div>
-                        </div>
+                  <div className="service-outcome">
+                    <span className="service-detail-label">
+                      THE OUTCOME
+                    </span>
 
-                        <div className="service-details-side">
-                          <span className="service-details-label">
-                            WHAT WE DO
-                          </span>
+                    <p>{selectedService.outcome}</p>
+                  </div>
+                </div>
 
-                          <ul className="service-capabilities">
-                            {service.capabilities.map(
-                              (capability, i) => (
-                                <motion.li
-                                  key={capability}
-                                  initial={{ opacity: 0, x: 12 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{
-                                    duration: 0.35,
-                                    delay: 0.12 + i * 0.06,
-                                  }}
-                                >
-                                  <span className="capability-marker" />
-                                  {capability}
-                                </motion.li>
-                              )
-                            )}
-                          </ul>
+                <div className="service-keywords">
+                  {selectedService.keywords.map((keyword) => (
+                    <span key={keyword}>{keyword}</span>
+                  ))}
+                </div>
 
-                          <div className="service-process">
-                            <span className="service-process-label">
-                              OUR APPROACH
-                            </span>
+                <a className="service-display-cta" href="#contact">
+                  <span>Discuss a project</span>
+                  <ArrowUpRight size={17} />
+                </a>
+              </motion.div>
+            </AnimatePresence>
 
-                            <div className="service-process-steps">
-                              {service.keywords.map(
-                                (keyword, stepIndex) => (
-                                  <motion.div
-                                    className="service-process-step"
-                                    key={keyword}
-                                    initial={{ opacity: 0, y: 8 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{
-                                      duration: 0.3,
-                                      delay: 0.2 + stepIndex * 0.1,
-                                    }}
-                                  >
-                                    <span className="process-number">
-                                      0{stepIndex + 1}
-                                    </span>
-                                    <span>{keyword}</span>
-                                  </motion.div>
-                                )
-                              )}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="service-details-footer">
-                          <span>
-                            Have something in mind? Let's work through it.
-                          </span>
-
-                          <a
-                            href="#contact"
-                            className="animated-text-link"
-                          >
-                            Discuss your project
-                            <span className="animated-link-icon">
-                              <ArrowUpRight size={17} />
-                            </span>
-                          </a>
-                        </div>
-                      </motion.div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.article>
-            );
-          })}
+            <div className="service-display-decoration" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
         </motion.div>
 
-        {/* SERVICES FOOTER */}
-
+        {/* WHO WE WORK WITH */}
         <motion.div
-          className="services-footer"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          className="services-audience"
+          id="who-we-serve"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={revealTransition}
         >
-          <div className="services-footer-message">
-            <span className="services-footer-mark">M&CO.</span>
+          <div className="audience-heading">
+            <div className="audience-heading-main">
+              <div className="services-eyebrow">
+                <span className="services-eyebrow-line" />
+                <span>WHO WE WORK WITH</span>
+              </div>
+
+              <h3>
+                Good ideas come from
+                <span> everywhere.</span>
+              </h3>
+            </div>
 
             <p>
-              We don't just build technology.
-              <span> We make it work for people.</span>
+              We work with people at different stages, from individuals
+              with an idea to organisations looking for their next
+              technology partner.
             </p>
-          </div>
-
-          <a
-            href="#contact"
-            className="services-footer-link animated-text-link"
-          >
-            Have a project in mind?
-            <span className="animated-link-icon">
-              <ArrowUpRight size={17} />
-            </span>
-          </a>
-        </motion.div>
-
-        {/* WHO WE CREATE FOR */}
-
-        <motion.section
-          className="audience-section"
-          id="who-we-work-with"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-        >
-          <div className="audience-header">
-            <div className="services-eyebrow">
-              <span className="services-eyebrow-line" />
-              <span>WHO WE CREATE FOR</span>
-              <span className="services-eyebrow-divider">/</span>
-              <span>YOUR WORLD, OUR WORK</span>
-            </div>
-
-            <div className="audience-heading-row">
-              <h2 className="audience-heading">
-                Different people.
-                <br />
-                <span>Different ideas.</span>
-                <br />
-                One thoughtful approach.
-              </h2>
-
-              <p className="audience-intro">
-                Technology should meet people where they are.
-                Whether you're building a business, planning a
-                celebration or reimagining an organisation,
-                we create with your goals and your audience in mind.
-              </p>
-            </div>
           </div>
 
           <div className="audience-grid">
@@ -569,87 +360,60 @@ function Services() {
               const AudienceIcon = audience.icon;
 
               return (
-                <motion.article
-                  className="audience-card"
-                  key={audience.number}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    duration: 0.55,
-                    delay: index * 0.1,
-                  }}
-                  whileHover={{
-                    y: -5,
-                    transition: { duration: 0.25 },
-                  }}
+                <article
+                  className={`audience-card audience-card-${index + 1}`}
+                  key={audience.title}
                 >
                   <div className="audience-card-top">
-                    <span className="audience-number">
-                      {audience.number}
-                    </span>
-
-                    <span className="audience-icon">
-                      <AudienceIcon size={22} strokeWidth={1.5} />
-                    </span>
+                    <div className="audience-icon-wrap">
+                      <AudienceIcon size={24} strokeWidth={1.6} />
+                    </div>
                   </div>
 
-                  <span className="audience-label">
-                    {audience.label}
-                  </span>
+                  <div className="audience-card-content">
+                    <span className="audience-card-kicker">
+                      WHO WE SUPPORT
+                    </span>
 
-                  <h3>{audience.title}</h3>
+                    <h4>{audience.title}</h4>
 
-                  <p className="audience-description">
-                    {audience.description}
-                  </p>
-
-                  <div className="audience-examples">
-                    {audience.examples.map((example) => (
-                      <div
-                        className="audience-example"
-                        key={example}
-                      >
-                        <span className="audience-example-marker" />
-                        {example}
-                      </div>
-                    ))}
+                    <p>{audience.description}</p>
                   </div>
 
-                  <a
-                    href="#contact"
-                    className="audience-card-link animated-text-link"
-                  >
-                    Let's create something
-                    <span className="animated-link-icon">
-                      <ArrowUpRight size={16} />
-                    </span>
-                  </a>
-                </motion.article>
+                  <div className="audience-card-bottom">
+                    <div className="audience-card-examples">
+                      <span className="audience-examples-label">
+                        A FEW EXAMPLES
+                      </span>
+
+                      <span className="audience-examples-text">
+                        {audience.examples}
+                      </span>
+                    </div>
+                  </div>
+                </article>
               );
             })}
           </div>
 
-          <div className="audience-bottom">
-            <div className="audience-bottom-copy">
-              <Users size={20} strokeWidth={1.5} />
+          {/* COMPACT BOTTOM CTA */}
+          <div className="services-bottom-cta">
+            <div className="services-bottom-cta-content">
+              <span className="services-bottom-cta-label">
+                HAVE SOMETHING IN MIND?
+              </span>
 
               <p>
-                Don't see yourself here?
-                <span> That's not a limitation.</span>
+                Let's explore what we can build together.
               </p>
             </div>
 
-            <a
-              href="#contact"
-              className="audience-bottom-link"
-            >
-              Tell us what you're imagining
-              <ArrowUpRight size={17} />
+            <a href="#contact">
+              <span>Start a conversation</span>
+              <ArrowUpRight size={16} />
             </a>
           </div>
-        </motion.section>
-
+        </motion.div>
       </div>
     </section>
   );

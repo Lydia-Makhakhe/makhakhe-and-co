@@ -1,20 +1,27 @@
-
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+
 import Hero from './components/home/Hero';
 import Services from './components/home/Services';
+
+import { ThemeLanguageProvider } from './context/ThemeLanguageContext';
 
 import './App.css';
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <ThemeLanguageProvider>
+      <>
+        <Navbar />
 
-      <main>
-        <Hero />
-        <Services />
-      </main>
-    </>
+        <main>
+          <Hero />
+          <Services />
+        </main>
+
+        <Footer />
+      </>
+    </ThemeLanguageProvider>
   );
 }
 

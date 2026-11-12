@@ -10,7 +10,11 @@ import {
   ArrowUpRight,
   Menu,
   X,
+  Sun,
+  Moon,
 } from 'lucide-react';
+
+import { useThemeLanguage } from '../../context/useThemeLanguage';
 
 import './Navbar.css';
 
@@ -23,6 +27,8 @@ const navigationLinks = [
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { toggleTheme, isDark } = useThemeLanguage();
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -64,15 +70,33 @@ function Navbar() {
           ))}
         </nav>
 
-        {/* Contact button */}
+        {/* Desktop actions */}
 
-        <a
-          href="#contact"
-          className="navbar-contact"
-        >
-          <span>Start a project</span>
-          <ArrowUpRight size={16} />
-        </a>
+        <div className="navbar-actions">
+
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+            title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+            type="button"
+          >
+            {isDark ? (
+              <Sun size={17} />
+            ) : (
+              <Moon size={17} />
+            )}
+          </button>
+
+          <a
+            href="#contact"
+            className="navbar-contact"
+          >
+            <span>Start a project</span>
+            <ArrowUpRight size={16} />
+          </a>
+
+        </div>
 
         {/* Mobile menu button */}
 
@@ -81,44 +105,73 @@ function Navbar() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
+          type="button"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={23} /> : <Menu size={23} />}
         </button>
+
       </div>
 
       {/* Mobile navigation */}
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <motion.nav
+            id="mobile-navigation"
             className="mobile-menu"
+            aria-label="Mobile navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.28, ease: 'easeInOut' }}
           >
-            {navigationLinks.map((link, index) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                onClick={closeMenu}
-                initial={{ opacity: 0, x: -15 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.06 }}
-              >
-                {link.label}
-              </motion.a>
-            ))}
+            <div className="mobile-menu-links">
+              {navigationLinks.map((link, index) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  className="mobile-menu-link"
+                  onClick={closeMenu}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+            </div>
 
-            <a
-              href="#contact"
-              className="mobile-menu-contact"
-              onClick={closeMenu}
-            >
-              Start a project
-              <ArrowUpRight size={18} />
-            </a>
-          </motion.div>
+            <div className="mobile-menu-bottom">
+
+              <a
+                href="#contact"
+                className="mobile-menu-contact"
+                onClick={closeMenu}
+              >
+                <span>Start a project</span>
+                <ArrowUpRight size={17} />
+              </a>
+
+              <button
+                className="mobile-theme-toggle"
+                onClick={toggleTheme}
+                type="button"
+                aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+              >
+                {isDark ? (
+                  <Sun size={17} />
+                ) : (
+                  <Moon size={17} />
+                )}
+
+                <span>
+                  {isDark ? 'Light mode' : 'Dark mode'}
+                </span>
+              </button>
+
+            </div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </header>
