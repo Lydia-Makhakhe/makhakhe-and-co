@@ -1282,3 +1282,335 @@
     transform: none;
   }
 }
+
+
+/* =========================================
+   PINNED SERVICE SHOWCASE
+   Keeps the service explorer in view while
+   the user moves through this part of the page.
+========================================= */
+
+.services-showcase {
+  position: relative;
+  min-width: 0;
+  padding-bottom: clamp(180px, 32vh, 300px);
+}
+
+.service-explorer {
+  position: sticky;
+  top: clamp(82px, 10vh, 108px);
+  z-index: 4;
+  align-self: start;
+  max-height: calc(100svh - clamp(112px, 15vh, 154px));
+  min-height: 0;
+}
+
+.service-selector,
+.service-display {
+  min-height: 0;
+}
+
+.service-display {
+  max-height: calc(100svh - clamp(142px, 18vh, 184px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-champagne) transparent;
+}
+
+.service-display::-webkit-scrollbar {
+  width: 5px;
+}
+
+.service-display::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.service-display::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-champagne) 55%, transparent);
+}
+
+.service-display-content {
+  padding-bottom: 4px;
+}
+
+/* Keep the selector compact enough to share the viewport. */
+.service-option {
+  min-height: 78px;
+}
+
+.service-option-top {
+  margin-bottom: 9px;
+}
+
+.service-selector-footer {
+  padding-top: 12px;
+}
+
+/* =========================================
+   REFINED BOTTOM CALL TO ACTION
+========================================= */
+
+.services-bottom-cta {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  width: min(100%, 570px);
+  min-width: 0;
+  margin: 30px auto 0;
+  padding: 19px 21px;
+}
+
+.services-bottom-cta-content {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.services-bottom-cta p {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.services-bottom-cta a {
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* =========================================
+   RESPONSIVE PINNED SHOWCASE + CTA
+========================================= */
+
+@media (max-width: 768px) {
+  .services-showcase {
+    padding-bottom: clamp(140px, 25vh, 220px);
+  }
+
+  .service-explorer {
+    top: 76px;
+    max-height: calc(100svh - 92px);
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .service-selector {
+    padding: 11px 9px 8px;
+  }
+
+  .service-selector-heading {
+    padding-bottom: 9px;
+  }
+
+  .service-options {
+    gap: 6px;
+  }
+
+  .service-option {
+    min-height: 67px;
+    padding: 8px 10px;
+  }
+
+  .service-option-top {
+    margin-bottom: 6px;
+  }
+
+  .service-option-title {
+    line-height: 1.25;
+  }
+
+  .service-selector-footer {
+    padding-top: 8px;
+    font-size: 9px;
+  }
+
+  .service-display {
+    max-height: calc(100svh - 285px);
+    padding: 20px 20px 22px;
+  }
+
+  .service-display-top {
+    margin-bottom: 15px;
+  }
+
+  .service-display-icon {
+    width: 43px;
+    height: 43px;
+    margin-bottom: 13px;
+  }
+
+  .service-display-content h3 {
+    font-size: clamp(22px, 5vw, 27px);
+  }
+
+  .service-display-description {
+    margin-top: 10px;
+    line-height: 1.65;
+  }
+
+  .service-display-divider {
+    margin: 17px 0 15px;
+  }
+
+  .service-display-details {
+    gap: 14px;
+  }
+
+  .service-detail-label {
+    margin-bottom: 9px;
+  }
+
+  .service-capabilities ul {
+    gap: 7px;
+  }
+
+  .service-capabilities li {
+    font-size: 11px;
+  }
+
+  .service-outcome p {
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  .service-keywords {
+    gap: 6px;
+    margin-top: 15px;
+  }
+
+  .service-keywords span {
+    padding: 5px 8px;
+    font-size: 9px;
+  }
+
+  .service-display-cta {
+    margin-top: 16px;
+  }
+
+  .services-bottom-cta {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 13px;
+    width: min(100%, 520px);
+    margin-top: 23px;
+    padding: 16px;
+  }
+
+  .services-bottom-cta p {
+    font-size: 13px;
+  }
+
+  .services-bottom-cta a {
+    padding: 9px 11px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-explorer {
+    top: 68px;
+    max-height: calc(100svh - 80px);
+    gap: 7px;
+    padding: 7px;
+  }
+
+  .service-selector {
+    padding: 10px 7px 7px;
+  }
+
+  .service-option {
+    min-height: 61px;
+    padding: 7px 8px;
+  }
+
+  .service-option-top {
+    margin-bottom: 5px;
+  }
+
+  .service-option-title {
+    font-size: 10px;
+  }
+
+  .service-display {
+    max-height: calc(100svh - 260px);
+    padding: 17px 15px 19px;
+  }
+
+  .service-display-top {
+    margin-bottom: 13px;
+  }
+
+  .service-display-content h3 {
+    font-size: 23px;
+  }
+
+  .service-display-description {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .service-display-details {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    gap: 12px;
+  }
+
+  .service-outcome {
+    padding: 0 0 0 12px;
+    border-top: 0;
+    border-left: 1px solid var(--color-border);
+  }
+
+  .service-capabilities li {
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .service-outcome p {
+    font-size: 10px;
+  }
+
+  .services-bottom-cta {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    gap: 12px;
+    width: min(100%, 390px);
+    margin-top: 20px;
+    padding: 16px;
+  }
+
+  .services-bottom-cta-content {
+    width: 100%;
+  }
+
+  .services-bottom-cta p {
+    max-width: 290px;
+    font-size: 13px;
+  }
+
+  .services-bottom-cta a {
+    width: fit-content;
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+
+/* Avoid sticky positioning on short landscape screens. */
+@media (max-height: 620px) and (min-width: 769px) {
+  .service-explorer {
+    position: relative;
+    top: auto;
+    max-height: none;
+  }
+
+  .service-display {
+    max-height: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-display {
+    scroll-behavior: auto;
+  }
+}

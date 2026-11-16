@@ -142,8 +142,9 @@ function Services() {
       </div>
 
       <div className="services-container">
-        {/* SECTION INTRODUCTION */}
-        <motion.div
+        <div className="services-showcase">
+          {/* SECTION INTRODUCTION */}
+          <motion.div
           className="services-heading"
           initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -248,6 +249,7 @@ function Services() {
             id="service-display"
             role="tabpanel"
             aria-labelledby={`service-tab-${activeService}`}
+            aria-live="polite"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -325,6 +327,8 @@ function Services() {
             </div>
           </div>
         </motion.div>
+
+        </div>
 
         {/* WHO WE WORK WITH */}
         <motion.div
