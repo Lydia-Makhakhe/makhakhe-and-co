@@ -14,15 +14,17 @@ import {
   Moon,
 } from 'lucide-react';
 
+import { Link } from 'react-router-dom';
+
 import { useThemeLanguage } from '../../context/useThemeLanguage';
 
 import './Navbar.css';
 
 const navigationLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Our Work', href: '#work' },
-  { label: 'About', href: '#about' },
+  { label: 'Home', to: '/' },
+  { label: 'Services', to: '/#services' },
+  { label: 'Our Work', to: '/about#work' },
+  { label: 'About', to: '/about' },
 ];
 
 function Navbar() {
@@ -38,8 +40,8 @@ function Navbar() {
 
         {/* Brand */}
 
-        <a
-          href="#home"
+        <Link
+          to="/"
           className="navbar-brand"
           onClick={closeMenu}
           aria-label="Makhakhe and Co. home"
@@ -51,7 +53,7 @@ function Navbar() {
           <span className="brand-subtitle">
             DIGITAL ENGINEERING
           </span>
-        </a>
+        </Link>
 
         {/* Desktop navigation */}
 
@@ -60,13 +62,13 @@ function Navbar() {
           aria-label="Main navigation"
         >
           {navigationLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.to}
               className="navbar-link"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -88,28 +90,46 @@ function Navbar() {
             )}
           </button>
 
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="navbar-contact"
           >
             <span>Start a project</span>
             <ArrowUpRight size={16} />
-          </a>
+          </Link>
 
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile actions: theme toggle + menu */}
 
-        <button
-          className="navbar-menu-button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-navigation"
-          type="button"
-        >
-          {menuOpen ? <X size={23} /> : <Menu size={23} />}
-        </button>
+        <div className="navbar-mobile-actions">
+
+          <button
+            className="mobile-theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+            title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+            type="button"
+          >
+            {isDark ? (
+              <Sun size={19} />
+            ) : (
+              <Moon size={19} />
+            )}
+          </button>
+
+          <button
+            className="navbar-menu-button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            type="button"
+          >
+            {menuOpen ? <X size={23} /> : <Menu size={23} />}
+          </button>
+
+        </div>
 
       </div>
 
@@ -128,47 +148,33 @@ function Navbar() {
           >
             <div className="mobile-menu-links">
               {navigationLinks.map((link, index) => (
-                <motion.a
+                <motion.div
                   key={link.label}
-                  href={link.href}
-                  className="mobile-menu-link"
-                  onClick={closeMenu}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  {link.label}
-                </motion.a>
+                  <Link
+                    to={link.to}
+                    className="mobile-menu-link"
+                    onClick={closeMenu}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
             </div>
 
             <div className="mobile-menu-bottom">
 
-              <a
-                href="#contact"
+              <Link
+                to="/#contact"
                 className="mobile-menu-contact"
                 onClick={closeMenu}
               >
                 <span>Start a project</span>
                 <ArrowUpRight size={17} />
-              </a>
-
-              <button
-                className="mobile-theme-toggle"
-                onClick={toggleTheme}
-                type="button"
-                aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-              >
-                {isDark ? (
-                  <Sun size={17} />
-                ) : (
-                  <Moon size={17} />
-                )}
-
-                <span>
-                  {isDark ? 'Light mode' : 'Dark mode'}
-                </span>
-              </button>
+              </Link>
 
             </div>
           </motion.nav>

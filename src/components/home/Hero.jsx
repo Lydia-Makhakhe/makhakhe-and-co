@@ -133,7 +133,7 @@ function Hero() {
             variants={itemVariants}
           >
             <span className="hero-eyebrow-line" />
-            <span>DIGITAL SYSTEMS & TECHNOLOGY</span>
+            <span>TECHNOLOGY DEVELOPMENT</span>
             <span className="hero-eyebrow-divider">/</span>
             <span className="hero-eyebrow-location">
               LESOTHO

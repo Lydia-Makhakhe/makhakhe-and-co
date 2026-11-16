@@ -37,7 +37,6 @@
 
   gap: clamp(20px, 3vw, 45px);
 
-  /* Inset the brand and actions within the navbar */
   padding-inline: clamp(18px, 2.2vw, 30px);
 
   border-bottom: 1px solid var(--color-border);
@@ -120,7 +119,7 @@
 }
 
 /* =========================================
-   NAVBAR ACTIONS
+   DESKTOP NAVBAR ACTIONS
 ========================================= */
 
 .navbar-actions {
@@ -132,7 +131,7 @@
 }
 
 /* =========================================
-   THEME TOGGLE
+   DESKTOP THEME TOGGLE
 ========================================= */
 
 .theme-toggle {
@@ -161,7 +160,7 @@
 }
 
 /* =========================================
-   CONTACT BUTTON
+   DESKTOP CONTACT BUTTON
 ========================================= */
 
 .navbar-contact {
@@ -200,16 +199,68 @@
 }
 
 /* =========================================
+   MOBILE ACTIONS
+========================================= */
+
+/* Hidden on desktop */
+
+.navbar-mobile-actions {
+  display: none;
+}
+
+/* =========================================
    MOBILE MENU BUTTON
 ========================================= */
 
 .navbar-menu-button {
   display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   padding: 7px;
   background: transparent;
   color: var(--color-text);
-  border: none;
+  border: 1px solid transparent;
+  border-radius: 50%;
   cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.navbar-menu-button:hover {
+  background: var(--color-surface-raised);
+  border-color: var(--color-border);
+}
+
+/* =========================================
+   MOBILE THEME TOGGLE
+========================================= */
+
+.mobile-theme-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--color-champagne);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.mobile-theme-toggle:hover {
+  background: var(--color-surface-raised);
+  border-color: var(--color-border);
+  transform: rotate(12deg);
 }
 
 /* =========================================
@@ -231,6 +282,7 @@
 }
 
 .mobile-menu-link {
+  display: block;
   padding: 15px 0;
   border-bottom: 1px solid var(--color-border);
   color: var(--color-text-muted);
@@ -277,35 +329,6 @@
 }
 
 /* =========================================
-   MOBILE THEME TOGGLE
-========================================= */
-
-.mobile-theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 4px 0;
-  background: transparent;
-  border: none;
-  color: var(--color-text-muted);
-  font-family: inherit;
-  font-size: 13px;
-  text-align: left;
-  cursor: pointer;
-  transition: color var(--transition);
-}
-
-.mobile-theme-toggle svg {
-  color: var(--color-champagne);
-  flex-shrink: 0;
-}
-
-.mobile-theme-toggle:hover {
-  color: var(--color-text);
-}
-
-/* =========================================
    FOCUS STATES
 ========================================= */
 
@@ -324,26 +347,40 @@
 ========================================= */
 
 @media (max-width: 1050px) {
+
   .navbar-container {
     width: calc(100% - 48px);
     min-height: 85px;
     gap: 20px;
-
-    /* Keep mobile alignment consistent */
     padding-inline: 0;
   }
+
+  /* Hide desktop navigation and actions */
 
   .navbar-links,
   .navbar-actions {
     display: none;
   }
 
-  .navbar-menu-button {
+  /* Show mobile actions side by side */
+
+  .navbar-mobile-actions {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     margin-left: auto;
   }
+
+  .mobile-theme-toggle {
+    display: inline-flex;
+  }
+
+  .navbar-menu-button {
+    display: inline-flex;
+  }
+
+  /* Expanded mobile navigation */
 
   .mobile-menu {
     display: flex;
@@ -360,6 +397,7 @@
 ========================================= */
 
 @media (max-width: 480px) {
+
   .navbar-container {
     width: calc(100% - 36px);
     min-height: 78px;
@@ -374,6 +412,16 @@
     font-size: 8px;
   }
 
+  .navbar-mobile-actions {
+    gap: 5px;
+  }
+
+  .mobile-theme-toggle,
+  .navbar-menu-button {
+    width: 38px;
+    height: 38px;
+  }
+
   .mobile-menu {
     padding: 16px 20px 25px;
   }
@@ -384,6 +432,7 @@
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   .navbar *,
   .mobile-menu * {
     transition: none !important;
