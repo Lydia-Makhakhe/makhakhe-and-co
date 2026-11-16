@@ -1,13 +1,14 @@
 
 import { ArrowUpRight, ArrowUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import './Footer.css';
 
 const footerLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services' },
-  { label: 'Our Work', href: '#work' },
-  { label: 'About Us', href: '#about' },
+  { label: 'Home', to: '/' },
+  { label: 'Services', to: "/#services" },
+  { label: 'Our Work', to: '/about#work' },
+  { label: 'About Us', to: '/about' },
 ];
 
 function Footer() {
@@ -17,7 +18,10 @@ function Footer() {
     <footer className="site-footer" id="contact">
 
       {/* Transition from Services into the Footer */}
-      <div className="services-transition footer-transition" aria-hidden="true">
+      <div
+        className="services-transition footer-transition"
+        aria-hidden="true"
+      >
         <span className="services-transition-line" />
         <span className="services-transition-light" />
       </div>
@@ -28,15 +32,15 @@ function Footer() {
 
           {/* Brand */}
           <div className="footer-brand-section">
-            <a href="#home" className="footer-brand">
+            <Link to="/" className="footer-brand">
               <span className="footer-brand-name">
                 MAKHAKHE <span>& CO.</span>
               </span>
 
               <span className="footer-brand-subtitle">
-                DIGITAL ENGINEERING
+                SOFTWARE & SYSTEMS DEVELOPMENT
               </span>
-            </a>
+            </Link>
 
             <p className="footer-description">
               We bring ideas to life through thoughtful engineering,
@@ -59,7 +63,7 @@ function Footer() {
               <ul>
                 {footerLinks.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href}>{link.label}</a>
+                    <Link to={link.to}>{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -72,10 +76,21 @@ function Footer() {
                 Let's explore what we can build together.
               </p>
 
-              <a href="#services" className="footer-contact-link">
+              <Link
+                to="/#services"
+                className="footer-contact-link"
+              >
                 Explore our services
                 <ArrowUpRight size={16} strokeWidth={1.7} />
-              </a>
+              </Link>
+
+              <Link
+                to="/contact"
+                className="footer-contact-link footer-conversation-link"
+              >
+                Start a conversation
+                <ArrowUpRight size={16} strokeWidth={1.7} />
+              </Link>
             </div>
 
           </div>
@@ -102,14 +117,14 @@ function Footer() {
             Built with intention.
           </p>
 
-          <a
-            href="#home"
+          <Link
+            to="/#home"
             className="footer-back-to-top"
             aria-label="Back to top"
           >
             Back to top
             <ArrowUp size={15} strokeWidth={1.7} />
-          </a>
+          </Link>
         </div>
 
       </div>

@@ -1,5 +1,6 @@
 
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 import {
   ArrowDown,
@@ -121,7 +122,6 @@ function Hero() {
       <div className="hero-container">
 
         {/* Hero content */}
-
         <motion.div
           className="hero-content"
           variants={containerVariants}
@@ -166,20 +166,20 @@ function Hero() {
             className="hero-actions"
             variants={itemVariants}
           >
-            <a
-              href="#work"
+            <Link
+              to="/about#work"
               className="hero-button-primary"
             >
               Explore our work
               <ArrowUpRight size={18} />
-            </a>
+            </Link>
 
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="hero-button-secondary"
             >
               Start a conversation
-            </a>
+            </Link>
           </motion.div>
 
           <motion.div
@@ -195,7 +195,6 @@ function Hero() {
         </motion.div>
 
         {/* Animated website development workspace */}
-
         <motion.div
           className="hero-visual"
           initial={{ opacity: 0, y: 30 }}
@@ -214,7 +213,6 @@ function Hero() {
           <div className="builder-scene">
 
             {/* Floating development labels */}
-
             <motion.div
               className="builder-floating-note note-top"
               animate={{
@@ -252,11 +250,9 @@ function Hero() {
             </motion.div>
 
             {/* Main development workspace */}
-
             <div className="builder-window">
 
               {/* Browser header */}
-
               <div className="builder-topbar">
                 <div className="builder-browser-controls">
                   <span className="builder-dot dot-red" />
@@ -283,7 +279,6 @@ function Hero() {
               </div>
 
               {/* Workspace tabs */}
-
               <div className="builder-tabs">
                 <div className="builder-tab active">
                   <Code2 size={13} />
@@ -301,11 +296,9 @@ function Hero() {
               </div>
 
               {/* Code editor and website preview */}
-
               <div className="builder-content">
 
                 {/* Code editor */}
-
                 <div className="builder-code-panel">
                   <div className="builder-panel-heading">
                     <Terminal size={13} />
@@ -352,7 +345,6 @@ function Hero() {
                 </div>
 
                 {/* Live website preview */}
-
                 <div className="builder-preview">
                   <div className="builder-panel-heading">
                     <Monitor size={13} />
@@ -466,7 +458,6 @@ function Hero() {
               </div>
 
               {/* Component architecture */}
-
               <div className="builder-components">
                 <div className="builder-components-heading">
                   <span>BUILDING BLOCKS</span>
@@ -527,7 +518,6 @@ function Hero() {
               </div>
 
               {/* Workspace status bar */}
-
               <div className="builder-statusbar">
                 <div className="builder-status-left">
                   <motion.span
@@ -562,7 +552,6 @@ function Hero() {
       </div>
 
       {/* Scroll indicator */}
-
       <motion.a
         href="#services"
         className="hero-scroll-indicator"

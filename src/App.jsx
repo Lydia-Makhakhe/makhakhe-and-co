@@ -7,6 +7,7 @@ import Footer from './components/layout/Footer';
 import Hero from './components/home/Hero';
 import Services from './components/home/Services';
 import About from './components/home/About';
+import Contact from './components/contact/Contact';
 
 import AnalyticsTracker from './AnalyticsTracker';
 import AnalyticsConsent from './AnalyticsConsent';
@@ -17,13 +18,15 @@ function App() {
   return (
     <BrowserRouter>
       <>
+        {/* Analytics */}
         <AnalyticsTracker />
         <AnalyticsConsent />
 
+        {/* Shared navigation */}
         <Navbar />
 
+        {/* Website pages */}
         <Routes>
-          {/* Homepage */}
           <Route
             path="/"
             element={
@@ -34,23 +37,27 @@ function App() {
             }
           />
 
-          {/* About page */}
           <Route
             path="/about"
             element={
-              <main>
-                <About />
-              </main>
+              <About />
             }
           />
 
-          {/* Redirect unknown routes to homepage */}
+          <Route
+            path="/contact"
+            element={
+              <Contact />
+            }
+          />
+
           <Route
             path="*"
             element={<Navigate to="/" replace />}
           />
         </Routes>
 
+        {/* Shared footer */}
         <Footer />
       </>
     </BrowserRouter>

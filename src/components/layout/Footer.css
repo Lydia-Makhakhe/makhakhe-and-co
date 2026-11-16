@@ -251,6 +251,13 @@
     gap var(--transition);
 }
 
+
+/* Separate the two enquiry actions */
+.footer-conversation-link {
+  margin-top: 14px;
+}
+
+
 .footer-contact-link svg {
   color: var(--color-champagne);
   transition: transform var(--transition);

@@ -15,6 +15,8 @@ import {
   Store,
 } from 'lucide-react';
 
+import { Link } from 'react-router-dom';
+
 import './Services.css';
 
 const services = [
@@ -143,191 +145,191 @@ function Services() {
 
       <div className="services-container">
         <div className="services-showcase">
+
           {/* SECTION INTRODUCTION */}
           <motion.div
-          className="services-heading"
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={revealTransition}
-        >
-          <div className="services-eyebrow">
-            <span className="services-eyebrow-line" />
-            <span>WHAT WE DO</span>
-          </div>
-
-          <div className="services-heading-content">
-            <h2>
-              Technology with purpose.
-              <span> Built for people.</span>
-            </h2>
-
-            <p>
-              We combine design, engineering and strategic thinking to
-              create digital solutions that serve real needs.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* INTERACTIVE SERVICE EXPLORER */}
-        <motion.div
-          className="service-explorer"
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ ...revealTransition, delay: 0.1 }}
-        >
-          <div className="service-selector">
-            <div className="service-selector-heading">
-              <span className="service-selector-label">
-                EXPLORE OUR SERVICES
-              </span>
-
-              <span className="service-selector-count">
-                04 SERVICES
-              </span>
-            </div>
-
-            <div
-              className="service-options"
-              role="tablist"
-              aria-label="Our services"
-            >
-              {services.map((service, index) => {
-                const ServiceIcon = service.icon;
-                const isActive = activeService === index;
-
-                return (
-                  <button
-                    key={service.number}
-                    type="button"
-                    role="tab"
-                    id={`service-tab-${index}`}
-                    aria-selected={isActive}
-                    aria-controls="service-display"
-                    className={`service-option ${isActive ? 'active' : ''}`}
-                    onClick={() => setActiveService(index)}
-                  >
-                    <span className="service-option-top">
-                      <span className="service-option-number">
-                        {service.number}
-                      </span>
-
-                      <ServiceIcon
-                        className="service-option-icon"
-                        size={19}
-                        strokeWidth={1.6}
-                      />
-                    </span>
-
-                    <span className="service-option-bottom">
-                      <span className="service-option-title">
-                        {service.shortTitle}
-                      </span>
-
-                      <span className="service-option-action">
-                        {isActive ? 'EXPLORING' : 'EXPLORE'}
-                        <ArrowUpRight size={14} />
-                      </span>
-                    </span>
-
-                    <span className="service-option-indicator" />
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="service-selector-footer">
-              <span className="service-selector-dot" />
-              <span>Select a service to discover what we do</span>
-            </div>
-          </div>
-
-          {/* SERVICE INFORMATION */}
-          <div
-            className="service-display"
-            id="service-display"
-            role="tabpanel"
-            aria-labelledby={`service-tab-${activeService}`}
-            aria-live="polite"
+            className="services-heading"
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={revealTransition}
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedService.number}
-                className="service-display-content"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.25, ease: 'easeOut' }}
-              >
-                <div className="service-display-top">
-                  <span className="service-display-category">
-                    {selectedService.category}
-                  </span>
-
-                  <span className="service-display-number">
-                    {selectedService.number} / 04
-                  </span>
-                </div>
-
-                <div className="service-display-icon">
-                  <SelectedIcon size={27} strokeWidth={1.5} />
-                </div>
-
-                <h3>{selectedService.title}</h3>
-
-                <p className="service-display-description">
-                  {selectedService.description}
-                </p>
-
-                <div className="service-display-divider" />
-
-                <div className="service-display-details">
-                  <div className="service-capabilities">
-                    <span className="service-detail-label">
-                      WHAT WE OFFER
-                    </span>
-
-                    <ul>
-                      {selectedService.capabilities.map((capability) => (
-                        <li key={capability}>
-                          <Check size={15} />
-                          <span>{capability}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="service-outcome">
-                    <span className="service-detail-label">
-                      THE OUTCOME
-                    </span>
-
-                    <p>{selectedService.outcome}</p>
-                  </div>
-                </div>
-
-                <div className="service-keywords">
-                  {selectedService.keywords.map((keyword) => (
-                    <span key={keyword}>{keyword}</span>
-                  ))}
-                </div>
-
-                <a className="service-display-cta" href="#contact">
-                  <span>Discuss a project</span>
-                  <ArrowUpRight size={17} />
-                </a>
-              </motion.div>
-            </AnimatePresence>
-
-            <div className="service-display-decoration" aria-hidden="true">
-              <span />
-              <span />
-              <span />
+            <div className="services-eyebrow">
+              <span className="services-eyebrow-line" />
+              <span>WHAT WE DO</span>
             </div>
-          </div>
-        </motion.div>
 
+            <div className="services-heading-content">
+              <h2>
+                Technology with purpose.
+                <span> Built for people.</span>
+              </h2>
+
+              <p>
+                We combine design, engineering and strategic thinking to
+                create digital solutions that serve real needs.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* INTERACTIVE SERVICE EXPLORER */}
+          <motion.div
+            className="service-explorer"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ ...revealTransition, delay: 0.1 }}
+          >
+            <div className="service-selector">
+              <div className="service-selector-heading">
+                <span className="service-selector-label">
+                  EXPLORE OUR SERVICES
+                </span>
+
+                <span className="service-selector-count">
+                  04 SERVICES
+                </span>
+              </div>
+
+              <div
+                className="service-options"
+                role="tablist"
+                aria-label="Our services"
+              >
+                {services.map((service, index) => {
+                  const ServiceIcon = service.icon;
+                  const isActive = activeService === index;
+
+                  return (
+                    <button
+                      key={service.number}
+                      type="button"
+                      role="tab"
+                      id={`service-tab-${index}`}
+                      aria-selected={isActive}
+                      aria-controls="service-display"
+                      className={`service-option ${isActive ? 'active' : ''}`}
+                      onClick={() => setActiveService(index)}
+                    >
+                      <span className="service-option-top">
+                        <span className="service-option-number">
+                          {service.number}
+                        </span>
+
+                        <ServiceIcon
+                          className="service-option-icon"
+                          size={19}
+                          strokeWidth={1.6}
+                        />
+                      </span>
+
+                      <span className="service-option-bottom">
+                        <span className="service-option-title">
+                          {service.shortTitle}
+                        </span>
+
+                        <span className="service-option-action">
+                          {isActive ? 'EXPLORING' : 'EXPLORE'}
+                          <ArrowUpRight size={14} />
+                        </span>
+                      </span>
+
+                      <span className="service-option-indicator" />
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="service-selector-footer">
+                <span className="service-selector-dot" />
+                <span>Select a service to discover what we do</span>
+              </div>
+            </div>
+
+            {/* SERVICE INFORMATION */}
+            <div
+              className="service-display"
+              id="service-display"
+              role="tabpanel"
+              aria-labelledby={`service-tab-${activeService}`}
+              aria-live="polite"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedService.number}
+                  className="service-display-content"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                >
+                  <div className="service-display-top">
+                    <span className="service-display-category">
+                      {selectedService.category}
+                    </span>
+
+                    <span className="service-display-number">
+                      {selectedService.number} / 04
+                    </span>
+                  </div>
+
+                  <div className="service-display-icon">
+                    <SelectedIcon size={27} strokeWidth={1.5} />
+                  </div>
+
+                  <h3>{selectedService.title}</h3>
+
+                  <p className="service-display-description">
+                    {selectedService.description}
+                  </p>
+
+                  <div className="service-display-divider" />
+
+                  <div className="service-display-details">
+                    <div className="service-capabilities">
+                      <span className="service-detail-label">
+                        WHAT WE OFFER
+                      </span>
+
+                      <ul>
+                        {selectedService.capabilities.map((capability) => (
+                          <li key={capability}>
+                            <Check size={15} />
+                            <span>{capability}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="service-outcome">
+                      <span className="service-detail-label">
+                        THE OUTCOME
+                      </span>
+
+                      <p>{selectedService.outcome}</p>
+                    </div>
+                  </div>
+
+                  <div className="service-keywords">
+                    {selectedService.keywords.map((keyword) => (
+                      <span key={keyword}>{keyword}</span>
+                    ))}
+                  </div>
+
+                  <Link className="service-display-cta" to="/contact">
+                    <span>Discuss a project</span>
+                    <ArrowUpRight size={17} />
+                  </Link>
+                </motion.div>
+              </AnimatePresence>
+
+              <div className="service-display-decoration" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* WHO WE WORK WITH */}
@@ -412,10 +414,10 @@ function Services() {
               </p>
             </div>
 
-            <a href="#contact">
+            <Link to="/contact">
               <span>Start a conversation</span>
               <ArrowUpRight size={16} />
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
