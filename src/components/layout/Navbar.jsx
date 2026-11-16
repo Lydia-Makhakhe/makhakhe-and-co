@@ -51,7 +51,7 @@ function Navbar() {
           </span>
 
           <span className="brand-subtitle">
-            DIGITAL ENGINEERING
+            SOFTWARE & SYSTEMS DEVELOPMENT
           </span>
         </Link>
 

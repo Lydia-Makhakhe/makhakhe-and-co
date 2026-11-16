@@ -8,49 +8,51 @@ import Hero from './components/home/Hero';
 import Services from './components/home/Services';
 import About from './components/home/About';
 
-import { ThemeLanguageProvider } from './context/ThemeLanguageContext';
+import AnalyticsTracker from './AnalyticsTracker';
+import AnalyticsConsent from './AnalyticsConsent';
 
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <ThemeLanguageProvider>
-        <>
-          <Navbar />
+      <>
+        <AnalyticsTracker />
+        <AnalyticsConsent />
 
-          <Routes>
-            {/* Homepage */}
-            <Route
-              path="/"
-              element={
-                <main>
-                  <Hero />
-                  <Services />
-                </main>
-              }
-            />
+        <Navbar />
 
-            {/* About page */}
-            <Route
-              path="/about"
-              element={
-                <main>
-                  <About />
-                </main>
-              }
-            />
+        <Routes>
+          {/* Homepage */}
+          <Route
+            path="/"
+            element={
+              <main>
+                <Hero />
+                <Services />
+              </main>
+            }
+          />
 
-            {/* Redirect unknown routes to homepage */}
-            <Route
-              path="*"
-              element={<Navigate to="/" replace />}
-            />
-          </Routes>
+          {/* About page */}
+          <Route
+            path="/about"
+            element={
+              <main>
+                <About />
+              </main>
+            }
+          />
 
-          <Footer />
-        </>
-      </ThemeLanguageProvider>
+          {/* Redirect unknown routes to homepage */}
+          <Route
+            path="*"
+            element={<Navigate to="/" replace />}
+          />
+        </Routes>
+
+        <Footer />
+      </>
     </BrowserRouter>
   );
 }
